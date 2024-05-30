@@ -2,13 +2,15 @@ import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useFetch from "../../hooks/useFetch";
+import axios from "axios";
 
 const Datatable = () => {
-  const [data, setData] = useState(userRows);
+  const { data, loading, error } = useFetch("/users");
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    //setData(data.filter((item) => item.id !== id));
   };
 
   const actionColumn = [
@@ -48,6 +50,7 @@ const Datatable = () => {
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
+        getRowId={(row) => row._id}
       />
     </div>
   );

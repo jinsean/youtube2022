@@ -1,0 +1,15 @@
+.finance {
+    display: flex;
+  
+    .Container {
+      flex: 6;
+
+      img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+      }
+  
+    }
+  }
+  
